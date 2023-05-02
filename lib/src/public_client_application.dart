@@ -97,7 +97,7 @@ class PublicClientApplication {
       return map;
     } on PlatformException catch (e) {
       print(e.toString());
-      throw _convertException(e);
+      throw e;
     } catch (e) {
       print(e);
       rethrow;
@@ -116,7 +116,7 @@ class PublicClientApplication {
           await _channel.invokeMethod('acquireTokenSilent', res);
       return token;
     } on PlatformException catch (e) {
-      throw _convertException(e);
+      throw e;
     } catch (e) {
       print(e);
       rethrow;
@@ -128,7 +128,7 @@ class PublicClientApplication {
       await _channel.invokeMethod(
           'logout', <String, dynamic>{'browserLogout': browserLogout});
     } on PlatformException catch (e) {
-      throw _convertException(e);
+      throw e;
     }
   }
 
